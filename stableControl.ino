@@ -19,6 +19,7 @@ const int lButtonPin = 7;
 
 const int accelX = A0;
 const int accelY = A1;
+const int flexPin = A2;
 
 int rButtonState = 0;
 int lButtonState = 0;
@@ -83,7 +84,10 @@ void loop() {
   }else if (rButtonState == 1) {
     turnOff (ledRight);
   }*/
-
+  if (digitalRead(ledLeft == HIGH))
+  {
+    readWriteLed(ledLeft);
+  }
   delay(200);
   
 }
@@ -307,5 +311,13 @@ void leftTest() {
   Serial.println (reactionTimeL);
   Serial.print("Standard deviation: ");
   Serial.println(stddevL);
+}
+
+void readWriteLed(int led)
+{
+  ledStrength = analogRead(flexPin);
+  value = map(value, 700, 900, 0, 255);
+  analogWrite(led, value);
+}
 }
 
